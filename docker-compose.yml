@@ -1,0 +1,50 @@
+services:
+  #  librespot_paula:
+  #    build:
+  #      context: .
+  #      dockerfile: Dockerfile-librespot
+  #    network_mode: "bridge"
+  #    command: librespot -n "Home Audio" -b 320 -c ./cache --enable-volume-normalisation --initial-volume 50 --device-type avr --backend pipe --device /fifos/librespot_fifo_paula -u 317p2hoydewuzmusgcoxluykd43e -p Ultimatepassword77
+  #    volumes:
+  #      - /mnt/user/appdata/home-audio:/config
+  #      - /tmp:/fifos
+  #    container_name: librespot-paula
+  #  librespot_jordi:
+  #    build:
+  #      context: .
+  #      dockerfile: Dockerfile-librespot
+  #    network_mode: "bridge"
+  #    command: librespot -n "Home Audio" -b 320 -c ./cache --enable-volume-normalisation --initial-volume 50 --device-type avr --backend pipe --device /fifos/librespot_fifo_jordi -u jagjordi -p x25Dm0D2bZV4
+  #    volumes:
+  #      - /mnt/user/appdata/home-audio:/config
+  #      - /tmp:/fifos
+  #    container_name: librespot-jordi
+  snapcast:
+    build:
+      context: .
+      dockerfile: Dockerfile-snapserver
+    ports:
+      - 0.0.0.0:17040:17040/tcp
+      - 0.0.0.0:17050:17050/tcp
+      - 0.0.0.0:17800:17800/tcp
+    network_mode: "bridge"
+    command: snapserver -c /config/snapserver.conf
+    volumes:
+      - /mnt/user/appdata/home-audio:/config
+      - /tmp:/fifos
+    container_name: snapserver
+  mopidy:
+    build:
+      context: .
+      dockerfile: Dockerfile-mopidy
+    ports:
+      - 0.0.0.0:6683:6683/tcp
+    network_mode: "proxynet"
+    command: mopidy --config /config/mopidy.conf
+    volumes:
+      - /mnt/user/appdata/home-audio:/config
+      - /tmp:/fifos
+      - /mnt/user/appdata/home-audio/playlists:/var/lib/mopidy/playlists
+    devices:
+      - /dev/snd:/dev/snd
+    container_name: mopidy
