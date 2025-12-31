@@ -1,8 +1,7 @@
 services:
   #  librespot_paula:
   #    build:
-  #      context: .
-  #      dockerfile: Dockerfile-librespot
+  #      context: ./librespot
   #    network_mode: "bridge"
   #    command: librespot -n "Home Audio" -b 320 -c ./cache --enable-volume-normalisation --initial-volume 50 --device-type avr --backend pipe --device /fifos/librespot_fifo_paula -u 317p2hoydewuzmusgcoxluykd43e -p ***REMOVED***
   #    volumes:
@@ -11,8 +10,7 @@ services:
   #    container_name: librespot-paula
   #  librespot_jordi:
   #    build:
-  #      context: .
-  #      dockerfile: Dockerfile-librespot
+  #      context: ./librespot
   #    network_mode: "bridge"
   #    command: librespot -n "Home Audio" -b 320 -c ./cache --enable-volume-normalisation --initial-volume 50 --device-type avr --backend pipe --device /fifos/librespot_fifo_jordi -u jagjordi -p ***REMOVED***
   #    volumes:
@@ -21,8 +19,7 @@ services:
   #    container_name: librespot-jordi
   snapcast:
     build:
-      context: .
-      dockerfile: Dockerfile-snapserver
+      context: ./snapcast
     ports:
       - 0.0.0.0:17040:17040/tcp
       - 0.0.0.0:17050:17050/tcp
@@ -35,8 +32,7 @@ services:
     container_name: snapserver
   mopidy:
     build:
-      context: .
-      dockerfile: Dockerfile-mopidy
+      context: ./mopidy
     ports:
       - 0.0.0.0:6683:6683/tcp
     network_mode: "proxynet"
