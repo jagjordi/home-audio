@@ -11,5 +11,6 @@ RUN apt update && apt install -y \
 RUN python3 -m pip install --upgrade pip setuptools wheel
 RUN python3 -m pip install --upgrade Mopidy \
                                      Mopidy-Mobile \
+                                     Mopidy-Local \
                                      Mopidy-Iris
 EXPOSE 6683

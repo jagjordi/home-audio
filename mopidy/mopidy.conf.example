@@ -29,7 +29,7 @@ username =
 password =
 
 [file]
-enabled = true
+enabled = false
 media_dirs = /media
 excluded_file_extensions = 
   .directory
@@ -96,3 +96,22 @@ data_dir = /var/lib/mopidy/iris
 [mobile]
 enabled = true
 title = Mopidy Mobile
+
+[local]
+enabled = true
+media_dirs = /media
+excluded_file_extensions = 
+  .directory
+  .html
+  .jpeg
+  .jpg
+  .log
+  .nfo
+  .pdf
+  .png
+  .txt
+  .zip
+show_dotfiles = false
+follow_symlinks = false
+metadata_timeout = 1000
+
