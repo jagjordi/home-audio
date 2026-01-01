@@ -22,13 +22,11 @@ ENV PATH="/root/.cargo/bin/:${PATH}"
 RUN rustup target add aarch64-unknown-linux-gnu
 RUN rustup target add arm-unknown-linux-gnueabi
 RUN rustup target add arm-unknown-linux-gnueabihf
-RUN rustup target add mipsel-unknown-linux-gnu
 
 RUN mkdir /.cargo && \
     echo '[target.aarch64-unknown-linux-gnu]\nlinker = "aarch64-linux-gnu-gcc"' > /.cargo/config && \
     echo '[target.arm-unknown-linux-gnueabihf]\nlinker = "arm-linux-gnueabihf-gcc"' >> /.cargo/config && \
-    echo '[target.arm-unknown-linux-gnueabi]\nlinker = "arm-linux-gnueabi-gcc"' >> /.cargo/config && \
-    echo '[target.mipsel-unknown-linux-gnu]\nlinker = "mipsel-linux-gnu-gcc"' >> /.cargo/config
+    echo '[target.arm-unknown-linux-gnueabi]\nlinker = "arm-linux-gnueabi-gcc"' >> /.cargo/config
 WORKDIR  gst-plugins-rs
 RUN cargo build --package gst-plugin-spotify --release
 RUN install -m 644 target/release/libgstspotify.so $(pkg-config --variable=pluginsdir gstreamer-1.0)/
