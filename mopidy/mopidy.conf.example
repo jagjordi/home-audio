@@ -50,6 +50,8 @@ metadata_timeout = 1000
 enabled = true
 hostname = 0.0.0.0
 port = 6680
+# Note: HTTP port 6680 is for the web interface (Iris, Mobile)
+# Port 6683 in docker-compose.yml is for MPD protocol
 zeroconf = Mopidy HTTP server on $hostname
 allowed_origins =
 csrf_protection = true
@@ -113,6 +115,8 @@ youtube_api_key =
 enabled = true
 country = US
 locale = en_US
+# Default Iris authorization endpoints - these are official Iris services
+# See https://github.com/jaedb/Iris for more information
 spotify_authorization_url = https://jamesbarnsley.co.nz/iris/auth_spotify.php
 lastfm_authorization_url = https://jamesbarnsley.co.nz/iris/auth_lastfm.php
 genius_authorization_url = https://jamesbarnsley.co.nz/iris/auth_genius.php
