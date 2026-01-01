@@ -1,0 +1,125 @@
+# Mopidy configuration file
+# Copy this file to your config directory and rename to mopidy.conf
+# Configuration reference: https://docs.mopidy.com/en/latest/config/
+
+[core]
+cache_dir = /var/cache/mopidy
+config_dir = /config
+data_dir = /var/lib/mopidy
+max_tracklist_length = 10000
+restore_state = true
+
+[logging]
+verbosity = 0
+format = %(levelname)-8s [%(threadName)s] %(name)s %(message)s
+color = true
+config_file =
+
+[audio]
+mixer = software
+mixer_volume = 
+output = audioresample ! audioconvert ! audio/x-raw,rate=48000,channels=2,format=S16LE ! filesink location=/fifos/mopidy_fifo
+buffer_time = 
+
+[proxy]
+scheme =
+hostname =
+port =
+username =
+password =
+
+[file]
+enabled = true
+media_dirs = /media
+excluded_file_extensions = 
+  .directory
+  .html
+  .jpeg
+  .jpg
+  .log
+  .nfo
+  .pdf
+  .png
+  .txt
+  .zip
+show_dotfiles = false
+follow_symlinks = false
+metadata_timeout = 1000
+
+[http]
+enabled = true
+hostname = 0.0.0.0
+port = 6680
+zeroconf = Mopidy HTTP server on $hostname
+allowed_origins =
+csrf_protection = true
+default_app = mopidy
+
+[m3u]
+enabled = true
+base_dir = /var/lib/mopidy/playlists
+default_encoding = UTF-8
+default_extension = .m3u8
+playlists_dir = /var/lib/mopidy/playlists
+
+[softwaremixer]
+enabled = true
+
+[stream]
+enabled = true
+protocols = 
+  http
+  https
+  mms
+  rtmp
+  rtmps
+  rtsp
+metadata_blacklist = 
+timeout = 5000
+
+# Mopidy-Spotify configuration
+# Get your credentials from https://mopidy.com/ext/spotify/
+[spotify]
+enabled = true
+username = 
+password = 
+client_id = 
+client_secret = 
+bitrate = 320
+volume_normalization = true
+private_session = false
+timeout = 10
+allow_cache = true
+allow_network = true
+allow_playlists = true
+search_album_count = 20
+search_artist_count = 10
+search_track_count = 50
+toplist_countries = 
+
+# Mopidy-YouTube configuration
+[youtube]
+enabled = true
+allow_cache = true
+autoplay_enabled = false
+strict_autoplay = false
+max_autoplay_length = 600
+max_degrees_of_separation = 3
+youtube_api_key = 
+
+# Mopidy-Iris configuration
+# Web-based client interface
+[iris]
+enabled = true
+country = US
+locale = en_US
+spotify_authorization_url = https://jamesbarnsley.co.nz/iris/auth_spotify.php
+lastfm_authorization_url = https://jamesbarnsley.co.nz/iris/auth_lastfm.php
+genius_authorization_url = https://jamesbarnsley.co.nz/iris/auth_genius.php
+data_dir = /var/lib/mopidy/iris
+
+# Mopidy-Mobile configuration
+# Mobile-friendly web client
+[mobile]
+enabled = true
+title = Mopidy Mobile

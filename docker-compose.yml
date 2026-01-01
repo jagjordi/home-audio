@@ -41,6 +41,7 @@ services:
       - /mnt/user/appdata/home-audio:/config
       - /tmp:/fifos
       - /mnt/user/appdata/home-audio/playlists:/var/lib/mopidy/playlists
+      - ${MEDIA_PATH:-/mnt/user/media}:/media
     devices:
       - /dev/snd:/dev/snd
     container_name: mopidy
