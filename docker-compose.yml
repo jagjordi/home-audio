@@ -32,6 +32,7 @@ services:
       - /mnt/user/appdata/home-audio:/config
       - /tmp:/fifos
       - /mnt/user/appdata/home-audio/playlists:/var/lib/mopidy/playlists
+      - /mnt/user/appdata/home-audio/local:/var/lib/mopidy/local
       - ${MEDIA_PATH:-/mnt/user/media}:/media
     devices:
       - /dev/snd:/dev/snd
