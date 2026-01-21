@@ -1,13 +1,4 @@
 services:
-  #  librespot_paula:
-  #    build:
-  #      context: ./librespot
-  #    network_mode: "bridge"
-  #    command: librespot -n "Home Audio" -b 320 -c ./cache --enable-volume-normalisation --initial-volume 50 --device-type avr --backend pipe --device /fifos/librespot_fifo_paula -u 317p2hoydewuzmusgcoxluykd43e -p ***REMOVED***
-  #    volumes:
-  #      - /mnt/user/appdata/home-audio:/config
-  #      - /tmp:/fifos
-  #    container_name: librespot-paula
   #  librespot_jordi:
   #    build:
   #      context: ./librespot
